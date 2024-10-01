@@ -1,11 +1,17 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import "../styles/Navbar.css";
+import axios from "axios";
 
 export default function Navbar() {
 	const location = useLocation();
 	const navigate = useNavigate();
 
 	const handleLogout = () => {
+		axios.post("http://localhost:3310/api/auth/logout", {},
+			{
+				withCredentials: true // obligé d'être en 3ème position
+			}
+		)
 		navigate("/");
 	};
 
